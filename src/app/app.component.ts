@@ -6,7 +6,7 @@ import { Component, ViewChildren, QueryList, ElementRef } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tabs = [
+  tabObjects = [
     {
       title: 'Tab 01',
       closable: true,
@@ -23,17 +23,16 @@ export class AppComponent {
     }
   ];
 
-  @ViewChildren('dtab') declarativeTabs: QueryList<ElementRef>;
-  @ViewChildren('ptab') programmaticTabs: QueryList<ElementRef>;
+  @ViewChildren('tab') tabs: QueryList<ElementRef>;
+  @ViewChildren('statefulTab') statefulTabs: QueryList<ElementRef>;
 
-  onDeclarativeTabClosed({ detail: component }) {
-    const tabs = this.declarativeTabs.filter(tab => tab.nativeElement === component);
-    this.declarativeTabs.reset(tabs);
+  onTabClosed({ detail: component }) {
+    console.log(component);
   }
 
-  onProgrammaticTabClosed(event) {
-    const component = event.detail;
+  onStatefulTabClosed(event) {
     event.preventDefault();
-    this.tabs.splice(component.id.split('-')[1], 1);
+    const component = event.detail;
+    this.tabObjects.splice(component.dataset.index, 1);
   }
 }

@@ -1,16 +1,23 @@
-<h1>Declarative</h1>
-<x-tabs (tabclosed)="onDeclarativeTabClosed($event)">
-  <x-tab title="Tab 01" #dtab closable="true">
-    <h3>Tab 01 Content</h3>
+<h1>Stateless</h1>
+<x-tabs (tabclosed)="onTabClosed($event)">
+  <x-tab title="Tab 01" #tab closable="true">
+    <div>
+      <h3>Tab 01 Content</h3>
+    </div>
   </x-tab>
-  <x-tab #dtab title="Tab 02">
-    <h3>Tab 02 Content</h3>
+  <x-tab #tab title="Tab 02">
+    <div>
+      <h3>Tab 02 Content</h3>
+    </div>
   </x-tab>
 </x-tabs>
 
-<h1>Programmatic</h1>
-<x-tabs (tabclosed)="onProgrammaticTabClosed($event)">
-  <x-tab *ngFor="let tab of tabs; let i = index" #ptab id="tab-{{i}}" [title]="tab.title" [closable]="tab.closable">
-    <h3>{{ tab.pane.title }}</h3>
+<h1>Stateful</h1>
+<x-tabs (tabclosed)="onStatefulTabClosed($event)">
+  <x-tab *ngFor="let tab of tabObjects; let i = index" #statefulTab
+         [attr.data-index]="i" [title]="tab.title" [closable]="tab.closable">
+    <div>
+      <h3>{{ tab.pane.title }}</h3>
+    </div>
   </x-tab>
 </x-tabs>
