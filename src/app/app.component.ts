@@ -1,7 +1,5 @@
 import { Component, ViewChildren, QueryList, ElementRef } from '@angular/core';
 
-import { Tab } from '../web-components/Tab';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
