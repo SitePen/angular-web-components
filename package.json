@@ -1,7 +1,7 @@
 {
   "name": "angular-web-components",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
